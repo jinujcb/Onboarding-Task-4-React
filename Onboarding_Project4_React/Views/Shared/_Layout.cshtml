@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Onboarding Task -4</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#" style="color:yellow">Mars-Onboarding</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Customers/Index" style="color:white">Customers <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Products/Index" style="color:white">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Stores/Index" style="color:white">Stores</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Sales/Index" style="color:white">Sales</a>
+                </li>
+            </ul>
+        </div>
+    </nav>@*Bootstrap 4 navbar*@
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Onboarding Task -4 </p>
+        </footer>
+    </div>
+
+    @Styles.Render("~/Content/css");
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/semantic")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/bootbox")
+    @Scripts.Render("~/bundles/moment")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StoreModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProductSolds" Relationship="Self.FK__ProductSo__Custo__3D5E1FD2" FromRole="Customer" ToRole="ProductSold" />
+    <NavigationProperty Name="ProductSolds1" Relationship="Self.FK__ProductSo__Custo__4CA06362" FromRole="Customer" ToRole="ProductSold" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Price" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProductSolds" Relationship="Self.FK__ProductSo__Produ__3E52440B" FromRole="Product" ToRole="ProductSold" />
+    <NavigationProperty Name="ProductSolds1" Relationship="Self.FK__ProductSo__Produ__4D94879B" FromRole="Product" ToRole="ProductSold" />
+    <NavigationProperty Name="ProductSolds2" Relationship="Self.FK__ProductSo__Produ__5441852A" FromRole="Product" ToRole="ProductSold" />
+  </EntityType>
+  <EntityType Name="ProductSold">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="StoreID" Type="Int32" Nullable="false" />
+    <Property Name="Datesold" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__ProductSo__Custo__3D5E1FD2" FromRole="ProductSold" ToRole="Customer" />
+    <NavigationProperty Name="Customer1" Relationship="Self.FK__ProductSo__Custo__4CA06362" FromRole="ProductSold" ToRole="Customer" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__ProductSo__Produ__3E52440B" FromRole="ProductSold" ToRole="Product" />
+    <NavigationProperty Name="Product1" Relationship="Self.FK__ProductSo__Produ__4D94879B" FromRole="ProductSold" ToRole="Product" />
+    <NavigationProperty Name="Product2" Relationship="Self.FK__ProductSo__Produ__5441852A" FromRole="ProductSold" ToRole="Product" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__ProductSo__Store__3F466844" FromRole="ProductSold" ToRole="Store" />
+    <NavigationProperty Name="Store1" Relationship="Self.FK__ProductSo__Store__4E88ABD4" FromRole="ProductSold" ToRole="Store" />
+    <NavigationProperty Name="Store2" Relationship="Self.FK__ProductSo__Store__5535A963" FromRole="ProductSold" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProductSolds" Relationship="Self.FK__ProductSo__Store__3F466844" FromRole="Store" ToRole="ProductSold" />
+    <NavigationProperty Name="ProductSolds1" Relationship="Self.FK__ProductSo__Store__4E88ABD4" FromRole="Store" ToRole="ProductSold" />
+    <NavigationProperty Name="ProductSolds2" Relationship="Self.FK__ProductSo__Store__5535A963" FromRole="Store" ToRole="ProductSold" />
+  </EntityType>
+  <Association Name="FK__ProductSo__Custo__3D5E1FD2">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Custo__4CA06362">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Produ__3E52440B">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Produ__4D94879B">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Produ__5441852A">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Store__3F466844">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Store__4E88ABD4">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProductSo__Store__5535A963">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="ProductSold" Type="Self.ProductSold" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ProductSold">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StoreEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="ProductSolds" EntityType="Self.ProductSold" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <AssociationSet Name="FK__ProductSo__Custo__3D5E1FD2" Association="Self.FK__ProductSo__Custo__3D5E1FD2">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Custo__4CA06362" Association="Self.FK__ProductSo__Custo__4CA06362">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Produ__3E52440B" Association="Self.FK__ProductSo__Produ__3E52440B">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Produ__4D94879B" Association="Self.FK__ProductSo__Produ__4D94879B">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Produ__5441852A" Association="Self.FK__ProductSo__Produ__5441852A">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Store__3F466844" Association="Self.FK__ProductSo__Store__3F466844">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Store__4E88ABD4" Association="Self.FK__ProductSo__Store__4E88ABD4">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProductSo__Store__5535A963" Association="Self.FK__ProductSo__Store__5535A963">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="ProductSold" EntitySet="ProductSolds" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
